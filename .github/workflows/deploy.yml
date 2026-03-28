@@ -1,0 +1,46 @@
+name: Deploy to GCP VM
+
+# Triggers on every push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: SSH deploy to GCP VM
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── Step 1: Notify start ──────────────────────────────────────────────
+      - name: Log deploy start
+        run: echo "Deploying commit ${{ github.sha }} to GCP VM..."
+
+      # ── Step 2: SSH into VM and pull latest code ──────────────────────────
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host:     ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key:      ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+          port:     22
+          script: |
+            set -e
+
+            PROJECT_DIR="/opt/parliament-scraper"
+            VENV_PYTHON="$PROJECT_DIR/.venv/bin/python"
+            VENV_PIP="$PROJECT_DIR/.venv/bin/pip"
+
+            echo "--- Pulling latest code ---"
+            cd "$PROJECT_DIR"
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "--- Installing/updating dependencies ---"
+            "$VENV_PIP" install -r requirements.txt --quiet
+
+            echo "--- Verifying scraper is importable ---"
+            "$VENV_PYTHON" -c "from src.scraper import scrape; print('OK')"
+
+            echo "--- Deploy complete at $(date) ---"
+            echo "Commit: $(git log -1 --oneline)"

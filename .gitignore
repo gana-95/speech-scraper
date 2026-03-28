@@ -1,0 +1,26 @@
+.github/instructions/wmt-copilot.instructions.md
+.vscode/
+
+# Downloaded PDFs
+debates/
+ 
+# Logs
+logs/
+ 
+# Scraper state
+scraper_state.json
+ 
+# Environment variables
+.env
+ 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+ 
+# OS
+.DS_Store
+Thumbs.db
