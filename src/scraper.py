@@ -32,7 +32,7 @@ import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
-from src.state import load_state, save_state
+from state import load_state, save_state
 
 load_dotenv()
 
