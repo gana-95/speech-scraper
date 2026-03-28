@@ -27,7 +27,7 @@ jobs:
           script: |
             set -e
 
-            PROJECT_DIR="/opt/parliament-scraper"
+            PROJECT_DIR="/opt/speech-scraper"
             VENV_PYTHON="$PROJECT_DIR/.venv/bin/python"
             VENV_PIP="$PROJECT_DIR/.venv/bin/pip"
 

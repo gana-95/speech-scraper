@@ -9,7 +9,7 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "============================================================"
-echo "  Parliament Scraper -- VM Setup"
+echo "  Speech Scraper -- VM Setup"
 echo "============================================================"
 
 # ── System packages ─────────────────────────────────────────────────────────

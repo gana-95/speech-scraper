@@ -70,7 +70,7 @@ rsync \
 # ── Commit and push if there are changes ────────────────────────────────────
 cd "$STORAGE_REPO_DIR"
 
-git config user.email "scraper-bot@parliament-scraper"
+git config user.email "scraper-bot@speech-scraper"
 git config user.name  "Scraper Bot"
 git add -A
 
