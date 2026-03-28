@@ -128,7 +128,7 @@ Pushing to `main` triggers a GitHub Actions workflow (`.github/workflows/deploy.
 |---|---|
 | `GCP_VM_HOST` | External IP address of the GCP VM |
 | `GCP_VM_USER` | SSH username (e.g. `ubuntu`) |
-| `GCP_SSH_PRIVATE_KEY` | Private SSH key for VM access |
+| `GCP_VM_PRIVATE_KEY` | Private SSH key for VM access |
 
 ---
 
